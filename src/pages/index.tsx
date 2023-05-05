@@ -1,8 +1,18 @@
+import { Button } from '@/components/Button';
+import { DemoContainer } from '@/components/DemoContainer';
+import { useTheme } from 'next-themes';
+
 const Page = () => {
+  const { theme, setTheme } = useTheme();
+
+  const handleChangeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <div>
-      <h1>Page</h1>
-    </div>
+    <DemoContainer>
+      <Button onClick={handleChangeTheme}>mudar tema</Button>
+    </DemoContainer>
   );
 };
 
