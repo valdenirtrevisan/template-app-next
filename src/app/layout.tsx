@@ -1,6 +1,7 @@
 import { Navbar } from '@/ui/components';
 import '../styles/globals.css';
 import { Metadata } from 'next';
+import { Providers } from '@/ui/libs';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
