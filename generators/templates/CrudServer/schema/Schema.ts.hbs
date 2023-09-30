@@ -1,0 +1,20 @@
+import { z } from 'zod';
+
+const full = z.object({
+  id: z.string(),
+});
+const create = full.omit({ id: true });
+const update = full.omit({ id: true }).partial();
+
+export const cidadeSchema = {
+  full,
+  create,
+  update,
+};
+
+
+export const {{camelCase nome}}Schema = {
+  full,
+  create,
+  update,
+};

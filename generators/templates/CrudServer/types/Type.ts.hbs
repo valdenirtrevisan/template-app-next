@@ -1,0 +1,5 @@
+import { z } from 'zod';
+import { {{camelCase nome}}Schema } from '@/server/schemas';
+
+export type {{pascalCase nome}}Create = z.infer<typeof {{camelCase nome}}Schema.create>;
+export type {{pascalCase nome}}Update = z.infer<typeof {{camelCase nome}}Schema.update>;

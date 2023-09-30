@@ -23,4 +23,71 @@ module.exports = function (plop) {
       },
     ],
   });
+  plop.setGenerator('crud', {
+    description: 'Cria um crud',
+    prompts: [
+      {
+        type: 'input',
+        name: 'nome',
+        message: 'qual é o nome do CRUD?',
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: '../src/app/api/{{dashCase nome}}s/route.ts',
+        templateFile: 'templates/CrudServer/api/Route.ts.hbs',
+      },
+      {
+        type: 'add',
+        path: '../src/app/api/{{dashCase nome}}s/[id]/route.ts',
+        templateFile: 'templates/CrudServer/api/id/Route.ts.hbs',
+      },
+      {
+        type: 'add',
+        path: '../src/server/controller/{{camelCase nome}}.ts',
+        templateFile: 'templates/CrudServer/controller/Controller.ts.hbs',
+      },
+      {
+        type: 'modify',
+        path: '../src/server/controller/index.ts',
+        pattern: /(\/\/ IMPORT MODULE FILES)/g,
+        template: "$1\nexport * from './{{camelCase nome}}';",
+      },
+      {
+        type: 'add',
+        path: '../src/server/repository/{{camelCase nome}}.ts',
+        templateFile: 'templates/CrudServer/repository/Repository.ts.hbs',
+      },
+      {
+        type: 'modify',
+        path: '../src/server/repository/index.ts',
+        pattern: /(\/\/ IMPORT MODULE FILES)/g,
+        template: "$1\nexport * from './{{camelCase nome}}';",
+      },
+      {
+        type: 'add',
+        path: '../src/server/schemas/{{camelCase nome}}.ts',
+        templateFile: 'templates/CrudServer/schema/Schema.ts.hbs',
+      },
+      {
+        type: 'modify',
+        path: '../src/server/schemas/index.ts',
+        pattern: /(\/\/ IMPORT MODULE FILES)/g,
+        template: "$1\nexport * from './{{camelCase nome}}';",
+      },
+
+      {
+        type: 'add',
+        path: '../src/server/types/{{camelCase nome}}.ts',
+        templateFile: 'templates/CrudServer/types/Type.ts.hbs',
+      },
+      {
+        type: 'modify',
+        path: '../src/server/types/index.ts',
+        pattern: /(\/\/ IMPORT MODULE FILES)/g,
+        template: "$1\nexport * from './{{camelCase nome}}';",
+      },
+    ],
+  });
 };

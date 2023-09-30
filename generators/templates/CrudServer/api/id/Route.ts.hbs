@@ -1,0 +1,19 @@
+import { {{camelCase nome}}Controller } from '@/server/controller';
+
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  return {{camelCase nome}}Controller.update(request, params.id);
+}
+
+export async function GET(_: Request, { params }: { params: { id: string } }) {
+  return {{camelCase nome}}Controller.findById(params.id);
+}
+
+export async function DELETE(
+  _: Request,
+  { params }: { params: { id: string } },
+) {
+  return {{camelCase nome}}Controller.remove(params.id);
+}

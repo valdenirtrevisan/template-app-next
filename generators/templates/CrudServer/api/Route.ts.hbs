@@ -1,0 +1,9 @@
+import { {{camelCase nome}}Controller } from '@/server/controller';
+
+export async function GET(request: Request) {
+  return await {{camelCase nome}}Controller.findAll(request);
+}
+
+export async function POST(request: Request) {
+  return await {{camelCase nome}}Controller.create(request);
+}
